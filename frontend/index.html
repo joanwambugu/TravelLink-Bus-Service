@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelLink | Premium Bus Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2><i class="fas fa-bus"></i> TRAVEL<span>LINK</span></h2>
+        <p class="subtitle">Safe & Reliable Bookings</p>
+    </header>
+
+    <div id="step1">
+        <div id="bookingForm">
+            <div class="input-group">
+                <label for="from">From</label>
+                <i class="fas fa-location-dot"></i>
+                <select id="from" required>
+                    <option value="">Select Departure</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="to">To</label>
+                <i class="fas fa-map-pin"></i>
+                <select id="to" required>
+                    <option value="">Select Destination</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="input-group">
+                        <label for="date">Date</label>
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="input-group">
+                        <label for="time">Time</label>
+                        <i class="fas fa-clock"></i>
+                        <input type="time" id="time" value="08:00" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="input-group">
+                        <label for="adults">Adults</label>
+                        <input type="number" id="adults" min="1" value="1">
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="input-group">
+                        <label for="kids">Kids</label>
+                        <input type="number" id="kids" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="submitBtn">Search Seats</button>
+        </div>
+    </div>
+
+    <div id="seatSection" style="display:none; text-align:center;">
+        <h3><i class="fas fa-th"></i> Choose Your Seat</h3>
+        <div class="bus-grid" id="busGrid"></div>
+        <button type="button" class="btn-next" id="confirmSeatsBtn">Confirm Seats</button>
+    </div>
+
+    <div id="paymentSection" style="display:none; text-align:center;">
+        <h3><i class="fas fa-wallet"></i> Payment (M-Pesa)</h3>
+        <p>Enter your Safaricom number for M-Pesa prompt.</p>
+        <div class="input-group">
+            <input type="tel" id="phoneInput" placeholder="2547XXXXXXXX" required style="padding-left:15px;">
+        </div>
+        <button type="button" class="btn-next" id="payBtn">Pay & Verify</button>
+    </div>
+
+    <div id="otpSection" style="display:none; text-align:center;">
+        <div class="ticket-card">
+            <h3><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Booking Confirmed!</h3>
+            <div id="ticketDetails" style="text-align: left; margin: 20px 0; line-height: 1.8; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                </div>
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button type="button" class="btn-next" id="printUserTicket" style="background: #5f6368;">
+                <i class="fas fa-print"></i> Print Ticket
+            </button>
+            <button type="button" class="btn-next" onclick="location.reload()">Book Another</button>
+        </div>
+    </div>
+
+    <footer class="routes">
+        <strong>Popular:</strong> Nairobi ↔ Kisumu | Mombasa ↔ Nairobi
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

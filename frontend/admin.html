@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelLink | Admin Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-dashboard-layout">
+
+    <div id="adminLogin" style="max-width: 400px; margin: 150px auto; text-align: center; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); font-family: 'Inter', sans-serif;">
+        <div style="color: #0066cc; font-size: 2rem; margin-bottom: 20px;"><i class="fas fa-lock"></i></div>
+        <h2 style="margin-bottom: 10px;">Admin Access</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Please enter your credentials to manage TravelLink.</p>
+        <input type="password" id="adminPass" placeholder="Enter Admin Password" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; outline: none;">
+        <button id="loginBtn" style="width: 100%; padding: 12px; background: #0066cc; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Access Dashboard</button>
+    </div>
+
+    <div id="adminContent" style="display: none; width: 100%; height: 100vh;">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-bus"></i> TRAVEL<span>LINK</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active"><i class="fas fa-th-large"></i> Dashboard</div>
+                <div class="nav-item"><i class="fas fa-route"></i> Routes</div>
+                <div class="nav-item"><i class="fas fa-users"></i> Customers</div>
+                <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Exit Admin</a>
+            </nav>
+            <div class="sidebar-stats">
+                <div class="mini-stat">
+                    <label>Total Bookings</label>
+                    <p id="totalCount">0</p>
+                </div>
+                <div class="mini-stat">
+                    <label>Revenue (KES)</label>
+                    <p id="totalRevenue">0</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="adminSearch" placeholder="Search passenger phone..." onkeyup="filterAdminTable()">
+                </div>
+                <div class="user-profile">
+                    <span>System Administrator</span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=0066cc&color=fff" alt="Profile">
+                </div>
+            </header>
+
+            <section class="content-body">
+                <div class="table-container">
+                    <div class="table-header-actions">
+                        <div class="title-group">
+                            <h3>Passenger Manifest</h3>
+                            <p>Real-time view of all ticket sales</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="window.print()" class="btn-download"><i class="fas fa-file-pdf"></i> Download PDF</button>
+                            <button onclick="location.reload()" class="btn-refresh"><i class="fas fa-sync-alt"></i> Sync</button>
+                        </div>
+                    </div>
+                    <table id="bookingsTable">
+                        <thead>
+                            <tr>
+                                <th>Passenger</th>
+                                <th>Route</th>
+                                <th>Travel Date</th>
+                                <th>Seat No.</th>
+                                <th style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
